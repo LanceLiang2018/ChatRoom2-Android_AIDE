@@ -10,6 +10,7 @@ import android.support.v4.*;
 //import android.support.v13.*;
 import android.support.v4.widget.*;
 import org.json.*;
+import android.content.*;
 
 
 public class MainActivity extends Activity
@@ -71,6 +72,14 @@ public class MainActivity extends Activity
 				builder.show();
 				break;
 			case R.id.option_login:
+				//this.startActivity();
+				Intent intent=new Intent();
+				intent.setClass(MainActivity.this, Login.class);
+				/*
+				Bundle bundle=new Bundle();
+				bundle.putString("data", "data");
+				intent.putExtras(bundle);*/
+				startActivityForResult(intent, 0);
 				break;
 			default:
 				break;
