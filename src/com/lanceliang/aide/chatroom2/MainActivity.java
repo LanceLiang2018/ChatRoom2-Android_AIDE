@@ -51,8 +51,6 @@ public class MainActivity extends Activity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		// TODO: Implement this method
-		//menu.add("Test");
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main_menu, menu);
 		return super.onCreateOptionsMenu(menu);
@@ -71,6 +69,8 @@ public class MainActivity extends Activity
 				builder.setTitle("关于");
 				builder.setMessage(R.string.about);
 				builder.show();
+				break;
+			case R.id.option_login:
 				break;
 			default:
 				break;
