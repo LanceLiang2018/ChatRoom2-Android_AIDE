@@ -14,6 +14,7 @@ import android.content.*;
 
 public class Login extends Activity
 {
+	private Config config = new Config(this);
 	private TextView text_username;
 	private TextView text_password;
 	private Button btn_login;
@@ -21,7 +22,8 @@ public class Login extends Activity
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
-		setTheme(android.R.style.Theme_Material);
+		config.load();
+		setTheme(config.THEME);
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login);

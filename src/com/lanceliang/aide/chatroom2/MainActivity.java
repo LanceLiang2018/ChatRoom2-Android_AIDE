@@ -19,11 +19,13 @@ public class MainActivity extends Activity
 	private SwipeRefreshLayout srl;
 	private ListView list;
 	private ArrayAdapter adp;
+	private Config config = new Config(this);
 	
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
-		setTheme(android.R.style.Theme_Material);
+		config.load();
+		setTheme(config.THEME);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -37,10 +39,16 @@ public class MainActivity extends Activity
 		list.setAdapter(adp);
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 				@Override
-				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4)
-				{
-					//startActivity(R);
-					//Toast.makeText(MainActivity.this, data.get(p3), Toast.LENGTH_SHORT).show();
+				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4){
+					Toast.makeText(MainActivity.this, data.get(p3), Toast.LENGTH_SHORT).show();
+					Intent intent_room = new Intent();
+					intent_room.setClass(MainActivity.this, Chat.class);
+//					Bundle bundle=new Bundle();
+//					bundle.putString("name", "Name of Room");
+//					bundle.putString("gid", "1");
+//					intent_room.putExtras(bundle);
+//					//startActivityForResult(intent_room, 0, bundle);
+					startActivityForResult(intent_room, 0);
 				}
 			});
 		
@@ -72,14 +80,23 @@ public class MainActivity extends Activity
 				builder.show();
 				break;
 			case R.id.option_login:
-				//this.startActivity();
-				Intent intent=new Intent();
-				intent.setClass(MainActivity.this, Login.class);
+				Intent intent_login = new Intent();
+				intent_login.setClass(MainActivity.this, Login.class);
+				startActivityForResult(intent_login, 0);
+				break;
+			case R.id.option_signup:
+				Intent intent_signup = new Intent();
+				intent_signup.setClass(MainActivity.this, Signup.class);
 				/*
-				Bundle bundle=new Bundle();
-				bundle.putString("data", "data");
-				intent.putExtras(bundle);*/
-				startActivityForResult(intent, 0);
+				 Bundle bundle=new Bundle();
+				 bundle.putString("data", "data");
+				 intent.putExtras(bundle);*/
+				startActivityForResult(intent_signup, 0);
+				break;
+			case R.id.option_settings:
+				Intent intent_room = new Intent();
+				intent_room.setClass(MainActivity.this, Chat.class);
+				startActivityForResult(intent_room, 0);
 				break;
 			default:
 				break;
@@ -87,14 +104,4 @@ public class MainActivity extends Activity
 		return super.onMenuItemSelected(featureId, item);
 	}
 }
-/*
-private ListView.OnClickListener ListListener = new ListView.OnClickListener()
-{
-	@Override
-	public void onClick(View p1)
-	{
-		// TODO: Implement this method
-		Toast.makeText(this, "EEE", Toast.LENGTH_SHORT).show();
-	}
-}
-*/
+

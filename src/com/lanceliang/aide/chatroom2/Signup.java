@@ -4,23 +4,34 @@ import android.app.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
-import java.util.*;
-import android.view.View.*;
-import android.support.v4.*;
-//import android.support.v13.*;
-import android.support.v4.widget.*;
-import org.json.*;
-import android.content.*;
 
 public class Signup extends Activity
 {
+	private Config config = new Config(this);
+	private Button btn;
+	private EditText text_username;
+	private EditText text_password;
+	private EditText text_email;
+	
 	@Override
-	public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState)
+	public void onCreate(Bundle savedInstanceState)
 	{
-		setTheme(android.R.style.Theme_Material);
-		super.onCreate(savedInstanceState, persistentState);
+		config.load();
+		setTheme(config.THEME);
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.signup);
 		
+		btn = (Button)findViewById(R.id.signupButton_signup);
+		text_username = (EditText)findViewById(R.id.signupEditText_username);
+		text_password = (EditText)findViewById(R.id.signupEditText_password);
+		text_email = (EditText)findViewById(R.id.signupEditText_email);
+		
+		btn.setOnClickListener(new Button.OnClickListener(){
+				@Override
+				public void onClick(View p1){
+					Toast.makeText(Signup.this, "TODO: Sign up " + String.valueOf(text_username.getText()), Toast.LENGTH_SHORT).show();
+				}
+		});
 	}
 	
 }

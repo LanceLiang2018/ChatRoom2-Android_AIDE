@@ -2012,14 +2012,14 @@ containing a value of this type.
         public static final int never=0x7f09002a;
         public static final int none=0x7f090020;
         public static final int normal=0x7f09001c;
-        public static final int option_about=0x7f09005c;
-        public static final int option_clear_all=0x7f09005d;
-        public static final int option_exit=0x7f09005e;
-        public static final int option_join_in=0x7f09005b;
-        public static final int option_login=0x7f090057;
-        public static final int option_new_room=0x7f09005a;
-        public static final int option_settings=0x7f090059;
-        public static final int option_signup=0x7f090058;
+        public static final int option_about=0x7f090060;
+        public static final int option_clear_all=0x7f090061;
+        public static final int option_exit=0x7f090062;
+        public static final int option_join_in=0x7f09005f;
+        public static final int option_login=0x7f09005b;
+        public static final int option_new_room=0x7f09005e;
+        public static final int option_settings=0x7f09005d;
+        public static final int option_signup=0x7f09005c;
         public static final int progress_circular=0x7f090005;
         public static final int progress_horizontal=0x7f090006;
         public static final int radio=0x7f09003c;
@@ -2038,6 +2038,10 @@ containing a value of this type.
         public static final int showCustom=0x7f090021;
         public static final int showHome=0x7f090022;
         public static final int showTitle=0x7f090023;
+        public static final int signupButton_signup=0x7f09005a;
+        public static final int signupEditText_email=0x7f090059;
+        public static final int signupEditText_password=0x7f090058;
+        public static final int signupEditText_username=0x7f090057;
         public static final int slr=0x7f090055;
         public static final int split_action_bar=0x7f090007;
         public static final int start=0x7f090019;
@@ -2081,8 +2085,9 @@ containing a value of this type.
         public static final int login=0x7f030017;
         public static final int main=0x7f030018;
         public static final int room=0x7f030019;
-        public static final int signup=0x7f03001a;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001b;
+        public static final int settings=0x7f03001a;
+        public static final int signup=0x7f03001b;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001c;
     }
     public static final class menu {
         public static final int main_menu=0x7f0c0000;
