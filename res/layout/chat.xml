@@ -4,21 +4,26 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
-	android:gravity="bottom">
+	android:gravity="bottom"
+	android:layout_marginTop="160px">
 
-	<LinearLayout
+	<android.support.v4.widget.SwipeRefreshLayout
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:orientation="vertical">
+		android:orientation="vertical"
+		android:id="@+id/chatSwipeRefreshLayout">
 
 		<ListView
 			android:layout_height="wrap_content"
-			android:layout_width="wrap_content"/>
+			android:layout_width="wrap_content"
+			android:id="@+id/chatListView">
 
-	</LinearLayout>
+		</ListView>
+
+	</android.support.v4.widget.SwipeRefreshLayout>
 
 	<LinearLayout
-		android:layout_height="120px"
+		android:layout_height="160px"
 		android:layout_width="match_parent"
 		android:orientation="horizontal">
 
@@ -27,17 +32,20 @@
 			android:layout_width="wrap_content"
 			android:ems="10"
 			android:layout_height="wrap_content"
-			android:layout_weight="2"/>
+			android:layout_weight="2"
+			android:id="@+id/chatEditText"/>
 
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="Send"/>
+			android:text="Send"
+			android:id="@+id/chatButton_send"/>
 
 		<Button
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="More"/>
+			android:text="More"
+			android:id="@+id/chatButton_more"/>
 
 	</LinearLayout>
 

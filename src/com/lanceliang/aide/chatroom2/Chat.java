@@ -11,14 +11,18 @@ import android.support.v4.*;
 import android.support.v4.widget.*;
 import org.json.*;
 import android.content.*;
+import android.util.*;
 
 public class Chat extends Activity
 {
 	private Config config = new Config(this);
-	private TextView text_username;
-	private TextView text_password;
-	private Button btn_login;
-	private Button btn_signup;
+	private EditText text_message;
+	private Button btn_send, btn_more;
+	private ListView list_message;
+	private ArrayAdapter adp;
+	private List<String> data = new ArrayList<>();
+	private SwipeRefreshLayout srl;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
@@ -26,21 +30,30 @@ public class Chat extends Activity
 		setTheme(config.THEME);
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login);
-		//Toast.makeText(this, "Login Activity", Toast.LENGTH_SHORT);
-
-		text_username = (TextView)findViewById(R.id.loginEditText_username);
-		text_password = (TextView)findViewById(R.id.loginEditText_password);
-		btn_login = (Button)findViewById(R.id.loginButton_login);
-		btn_signup = (Button)findViewById(R.id.loginButton_signup);
-
-		btn_signup.setOnClickListener(new Button.OnClickListener(){
+		setContentView(R.layout.chat);
+		
+		for (int i=1; i<100; i++)
+			data.add(String.valueOf(i));
+		
+		text_message = (EditText)findViewById(R.id.chatEditText);
+		btn_send = (Button)findViewById(R.id.chatButton_send);
+		btn_more = (Button)findViewById(R.id.chatButton_more);
+		list_message = (ListView)findViewById(R.id.chatListView);
+		srl = (SwipeRefreshLayout)findViewById(R.id.chatSwipeRefreshLayout);
+		
+		adp = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
+		adp.addAll(data);
+		
+		list_message.setAdapter(adp);
+		
+		srl.setColorSchemeResources(android.R.color.holo_blue_dark);
+		srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
 				@Override
-				public void onClick(View p1)
+				public void onRefresh()
 				{
-					Intent intent = new Intent();
-					intent.setClass(Chat.this, Signup.class);
-					startActivity(intent);
+					Toast.makeText(Chat.this, "Refreshing...", Toast.LENGTH_SHORT).show();
+					
+					srl.setRefreshing(false);
 				}
 			});
 	}
