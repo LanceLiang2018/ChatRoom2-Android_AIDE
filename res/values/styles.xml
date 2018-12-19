@@ -2,4 +2,12 @@
 <resources>
     <style name="AppTheme" parent="@android:style/Theme.Material">
 	</style>
+	<style name="CustomActionBarStyle" parent="@android:style/Widget.DeviceDefault.Light.ActionBar">
+        <item name="android:contentInsetEnd">0dp</item>
+        <item name="android:contentInsetStart">0dp</item>
+    </style>
+	<style name="CustomTheme" parent="@android:style/Theme.Material">
+        <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
 </resources>

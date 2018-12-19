@@ -4,19 +4,20 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
-	android:gravity="bottom"
-	android:layout_marginTop="160px">
+	android:gravity="bottom">
 
 	<android.support.v4.widget.SwipeRefreshLayout
-		android:layout_height="wrap_content"
+		android:layout_height="match_parent"
 		android:layout_width="match_parent"
 		android:orientation="vertical"
-		android:id="@+id/chatSwipeRefreshLayout">
+		android:id="@+id/chatSwipeRefreshLayout"
+		android:layout_marginTop="160px">
 
 		<ListView
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:id="@+id/chatListView">
+			android:id="@+id/chatListView"
+			android:stackFromBottom="true">
 
 		</ListView>
 

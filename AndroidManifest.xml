@@ -34,7 +34,8 @@
             android:name=".Settings" >
         </activity>
 		<activity
-            android:label="@string/app_name"
+            android:label="@string/titlebar_text"
+			android:theme="@style/CustomTheme"
             android:name=".Chat" >
         </activity>
     </application>

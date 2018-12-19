@@ -40,14 +40,14 @@ public class MainActivity extends Activity
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> p1, View p2, int p3, long p4){
-					Toast.makeText(MainActivity.this, data.get(p3), Toast.LENGTH_SHORT).show();
+					//Toast.makeText(MainActivity.this, data.get(p3), Toast.LENGTH_SHORT).show();
 					Intent intent_room = new Intent();
 					intent_room.setClass(MainActivity.this, Chat.class);
-//					Bundle bundle=new Bundle();
-//					bundle.putString("name", "Name of Room");
-//					bundle.putString("gid", "1");
-//					intent_room.putExtras(bundle);
-//					//startActivityForResult(intent_room, 0, bundle);
+					Bundle bundle=new Bundle();
+					//Toast.makeText(MainActivity.this, String.valueOf(p3) + " of " + String.valueOf(p4), Toast.LENGTH_SHORT).show();
+					bundle.putString("name", "Name of Room " + data.get(p3));
+					bundle.putString("gid", data.get(p3));
+					intent_room.putExtras(bundle);
 					startActivityForResult(intent_room, 0);
 				}
 			});
