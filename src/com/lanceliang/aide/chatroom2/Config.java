@@ -1,10 +1,4 @@
 package com.lanceliang.aide.chatroom2;
-/*
-import android.app.*;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;*/
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -18,7 +12,8 @@ public class Config extends SQLiteOpenHelper
 	public static final String DB_NAME = "settings.db";
 	public static final String TB_NAME = "settings";
 
-	public String SERVER = "https://lance-chatroom2.herokuapp.com/";
+	//public String SERVER = "https://lance-chatroom2.herokuapp.com/";
+	public String SERVER = "http://0.0.0.0:5000/";
 	public int THEME = android.R.style.Theme_Material;
 	//public int a =  android.R.style.Theme_Material_Dialog_NoActionBar;
 	

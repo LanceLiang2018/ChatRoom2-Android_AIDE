@@ -11,6 +11,7 @@ import android.support.v4.*;
 import android.support.v4.widget.*;
 import org.json.*;
 import android.content.*;
+import java.io.*;
 
 
 public class MainActivity extends Activity
@@ -20,12 +21,15 @@ public class MainActivity extends Activity
 	private ListView list;
 	private ArrayAdapter adp;
 	private Config config = new Config(this);
+	private CommunicationService comm;
 	
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
 		config.load();
 		setTheme(config.THEME);
+		
+		comm = new CommunicationService();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -55,6 +59,16 @@ public class MainActivity extends Activity
 		srl = (SwipeRefreshLayout)findViewById(R.id.slr);
 		srl.setEnabled(true);
 		//srl.setRefreshing(true);
+		
+		try
+		{
+			comm.test();
+		}
+		catch (Exception e)
+		{
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+			android.util.Log.e("Communication", e.getMessage());
+		}
     }
 
 	@Override

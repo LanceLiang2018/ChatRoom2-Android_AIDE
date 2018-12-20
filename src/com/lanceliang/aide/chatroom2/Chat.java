@@ -15,6 +15,8 @@ import android.util.*;
 import android.content.res.Resources.*;
 import android.graphics.*;
 import android.graphics.drawable.*;
+//import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 public class Chat extends Activity
 {
@@ -30,9 +32,11 @@ public class Chat extends Activity
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
+		//config.THEME = android.R.style.Theme_Material_NoActionBar;
+		//config.save();
 		config.load();
 		setTheme(config.THEME);
-		//getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 		
 
 		super.onCreate(savedInstanceState);
@@ -42,7 +46,7 @@ public class Chat extends Activity
 		
 		try {
 			setContentView(R.layout.chat);
-			
+			/*
 			ActionBar bar = getActionBar();
 			bar.setDisplayHomeAsUpEnabled(true);
 			bar.setTitle((CharSequence)bundle.getString("name"));
@@ -50,11 +54,20 @@ public class Chat extends Activity
 			int color = Color.parseColor("#FFC03546");
 			ColorDrawable drawable = new ColorDrawable(color);
 			bar.setBackgroundDrawable(drawable);
+			*/
+			
+			Toolbar bar = (Toolbar)findViewById(R.id.toolbar);
+			bar.setTitle((CharSequence)bundle.getString("name"));
+			//bar.setBackgroundColor(Color.parseColor("#FFC03546"));
+			int color = Color.parseColor("#FFC03546");
+			ColorDrawable drawable = new ColorDrawable(color);
+			bar.setBackgroundDrawable(drawable);
+			
 		}
 		catch (Exception e) {
 			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
 		}
-
+		
 		text_message = (EditText)findViewById(R.id.chatEditText);
 		btn_send = (Button)findViewById(R.id.chatButton_send);
 		btn_more = (Button)findViewById(R.id.chatButton_more);
