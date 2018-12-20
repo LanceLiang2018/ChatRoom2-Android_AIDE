@@ -22,6 +22,7 @@ public class MainActivity extends Activity
 	private ArrayAdapter adp;
 	private Config config = new Config(this);
 	private CommunicationService comm;
+	private AsyncTask<String, Void, Object> task;
 	
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -59,16 +60,6 @@ public class MainActivity extends Activity
 		srl = (SwipeRefreshLayout)findViewById(R.id.slr);
 		srl.setEnabled(true);
 		//srl.setRefreshing(true);
-		
-		try
-		{
-			comm.test();
-		}
-		catch (Exception e)
-		{
-			Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-			android.util.Log.e("Communication", e.getMessage());
-		}
     }
 
 	@Override
@@ -108,14 +99,36 @@ public class MainActivity extends Activity
 				startActivityForResult(intent_signup, 0);
 				break;
 			case R.id.option_settings:
-				Intent intent_room = new Intent();
-				intent_room.setClass(MainActivity.this, Chat.class);
-				startActivityForResult(intent_room, 0);
+				task = new TestTask();
 				break;
 			default:
 				break;
 		}
 		return super.onMenuItemSelected(featureId, item);
+	}
+	
+	private class TestTask extends AsyncTask<String, Void, Object>
+	{
+		@Override
+		protected Object doInBackground(String[] p1)
+		{
+			Toast.makeText(MainActivity.this, "Test...", Toast.LENGTH_LONG).show();
+			HashMap<String, String> argc = new HashMap<String, String>();
+			argc.put("tt", "tt");
+			try
+			{
+				return comm.post(argc);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		@Override
+		protected void onPostExecute(Object res) {
+			if (res == null)
+				return;
+			Toast.makeText(MainActivity.this, res.toString(), Toast.LENGTH_LONG).show();
+		}
 	}
 }
 

@@ -46,7 +46,6 @@ public class Chat extends Activity
 		
 		try {
 			setContentView(R.layout.chat);
-			/*
 			ActionBar bar = getActionBar();
 			bar.setDisplayHomeAsUpEnabled(true);
 			bar.setTitle((CharSequence)bundle.getString("name"));
@@ -54,14 +53,10 @@ public class Chat extends Activity
 			int color = Color.parseColor("#FFC03546");
 			ColorDrawable drawable = new ColorDrawable(color);
 			bar.setBackgroundDrawable(drawable);
-			*/
 			
-			Toolbar bar = (Toolbar)findViewById(R.id.toolbar);
-			bar.setTitle((CharSequence)bundle.getString("name"));
-			//bar.setBackgroundColor(Color.parseColor("#FFC03546"));
-			int color = Color.parseColor("#FFC03546");
-			ColorDrawable drawable = new ColorDrawable(color);
-			bar.setBackgroundDrawable(drawable);
+			Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+			//toolbar.setTitle((CharSequence)bundle.getString("name"));
+			toolbar.setBackgroundColor(Color.parseColor("#FFC03546"));
 			
 		}
 		catch (Exception e) {

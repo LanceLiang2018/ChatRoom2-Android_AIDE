@@ -6,10 +6,12 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import android.widget.*;
+import android.os.*;
 
 public class CommunicationService
 {
-	public String SERVER = "http://0.0.0.0:5000";
+	//public String SERVER = "http://0.0.0.0:5000/";
+	public String SERVER = "http://www.baidu.com/";
 	public int TIMEOUT = 20000;
 	public int CommVer = 1;
 	public String MAIN = "",
@@ -48,7 +50,7 @@ public class CommunicationService
 		else return false;
 	}
 
-	public boolean post(HashMap<String, String> postParameters) throws Exception
+	public String post(HashMap<String, String> postParameters) throws Exception
 	{
 		android.util.Log.d("posting", "started");
 		String str = "ver=" + URLEncoder.encode(String.valueOf(CommVer), "UTF-8");
@@ -67,12 +69,28 @@ public class CommunicationService
 		PrintWriter out = new PrintWriter(conn.getOutputStream());
 		out.print(str);
 		out.close();
-		return true;
+		str = "";
+		Scanner in = new Scanner(conn.getInputStream());
+		while(in.hasNextLine()){
+			str+=(in.nextLine());
+		}
+		in.close();
+		conn.disconnect();
+
+		in = null;
+		out = null;
+		conn = null;
+		url = null;
+
+		android.util.Log.d("posting", "finished");
+		return str;
 	}
-	public void test() throws Exception
+	public String test() throws Exception
 	{
-		HashMap<String, String> argc = null;
+		HashMap<String, String> argc = new HashMap<String, String>();
 		argc.put("tt", "tt");
-		post(argc);
+		String str = post(argc);
+		return str;
 	}
+		
 }
