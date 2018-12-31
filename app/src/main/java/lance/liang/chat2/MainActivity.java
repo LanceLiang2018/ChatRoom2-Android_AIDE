@@ -17,6 +17,7 @@ import lance.liang.chat2.MainActivity.*;
 public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout srl;
 	private ListView list;
+	private ListView left;
 	private ArrayAdapter adp;
 	private Config config = new Config(this);
 	private CommunicationService comm;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
 
 		list = (ListView)findViewById(R.id.list_rooms);
+		left = (ListView)findViewById(R.id.list_left);
 
 		for (int i=1; i <= 100; i++)
 			data.add(String.valueOf(i));
@@ -59,7 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
 		srl = (SwipeRefreshLayout)findViewById(R.id.slr);
 		srl.setEnabled(true);
-		//srl.setRefreshing(true);
+		
+		TextView txt = new TextView(this);
+		txt.setText("Left");
+		left.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1));
+		left.addHeaderView(txt);
     }
 
 	@Override
